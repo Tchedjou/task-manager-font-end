@@ -1,0 +1,230 @@
+/* styles.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+
+.task-manager {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    width: 100%; /* Assure que le conteneur prend toute la largeur disponible */
+}
+
+h2 {
+   
+    color: #2e269b;
+    margin-bottom: 20px;
+}
+
+/* Conteneur des tâches */
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0; /* Espacement vertical */
+  }
+
+
+
+  /* Formulaire des taches */
+.task-form-container {
+    width: 300px;
+    margin-right: 20px;
+    /* display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; */
+}
+
+.task-list-container {
+    flex: 1; /* Prendre le reste de l'espace */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.input-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Styles pour le formulaire */
+form {
+    background-color: #fff; /* Couleur de fond par défaut */
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre */
+  }
+  
+  /* Espacement des éléments du formulaire */
+  form div {
+    margin-bottom: 15px; /* Espacement entre les éléments */
+  }
+  
+
+.btn {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.btn-add {
+    background-color: #28a745;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+}
+
+.btn-edit {
+    background-color: #007bff;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+
+
+.btn-update {
+    background-color: #007bff;
+    margin: 10px;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    margin-top: 10px;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.task-table th, .task-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.task-table th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.task-description {
+    word-wrap: break-word; /* Permet de gérer les longues descriptions */
+    max-width: 300px; /* Limite la largeur de la colonne de description */
+}
+
+.task-status {
+    font-weight: bold;
+    color: #007bff; /* Couleur pour le statut */
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+.update-form {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Styles des champs de saisie */
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%; /* Prendre toute la largeur */
+  padding: 8px; /* Espacement intérieur */
+  border: 1px solid #3f51b5; /* Bordure des champs */
+  border-radius: 4px; /* Coins arrondis */
+  font-size: 14px; /* Taille de la police */
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  
+/* Styles des boutons */
+button {
+    padding: 10px 15px; /* Espacement intérieur */
+    background-color: #3f51b5; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+    font-size: 16px; /* Taille de la police */
+    transition: background-color 0.3s; /* Transition pour le hover */
+  }
+  
+  /* Effet de survol des boutons */
+  button:hover {
+    background-color: #303f9f; /* Couleur de fond du bouton au survol */
+  }
+  
+  /* Styles pour les petits écrans */
+  @media (max-width: 768px) {
+    .task-container {
+      flex-direction: column; /* Aligner les éléments verticalement */
+    }
+  
+    .task-form {
+      width: 100%; /* Prendre toute la largeur */
+      margin-right: 0; /* Supprimer l'espacement à droite */
+      margin-bottom: 20px; /* Espacement en bas */
+    }
+  
+    .task-list {
+      width: 100%; /* Prendre toute la largeur */
+    }
+  }
+  
+  

@@ -1,0 +1,189 @@
+
+<div class="task-manager">
+    <div class="task-container"> 
+      <!-- Formulaire pour ajouter ou mettre à jour une nouvelle tâche -->
+      <div class="task-form-container">
+        <h2>Ajouter nouvelle tâche</h2>
+        <form (ngSubmit)="addTask()" class="task-form">
+          <input type="text" [(ngModel)]="newTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+          <input type="date" [(ngModel)]="newTask.dueDate" name="dueDate" required class="input-field">
+          <select [(ngModel)]="newTask.priority" name="priority" required class="input-field">
+            <option value="">Sélectionner la priorité</option>
+            <option value="low">Basse</option>
+            <option value="medium">Moyenne</option>
+            <option value="high">Haute</option>
+          </select>
+          <select [(ngModel)]="newTask.status" name="status" class="input-field">
+            <option value="pending">En attente</option>
+            <option value="completed">Complétée</option>
+          </select>
+          <button type="submit" class="btn btn-add">Ajouter Tâche</button>
+        </form>
+      </div> 
+  
+      <!-- Liste des tâches -->
+      <div class="task-list-container">
+        <h2>Gestion des Tâches</h2>
+        <table class="task-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Statut</th>
+              <th>Date d'échéance</th>
+              <th>Priorité</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks" class="task-item">
+              <td class="task-description">{{ task.description }}</td>
+              <td class="task-status">{{ task.status }}</td>
+              <td class="task-dueDate">{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
+              <td class="task-priority">{{ task.priority }}</td>
+              <td class="task-actions">
+                <button (click)="selectTaskForUpdate(task)" class="btn btn-edit">Modifier</button>
+                <button (click)="deleteTask(task.id!)" class="btn btn-delete" >Supprimer </button>
+
+                <!-- <button (click)="deleteTask(task.id!)" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette tâche ?')">Supprimer </button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> 
+<!-- Formulaire de mise à jour de la tâche sélectionnée -->
+<div *ngIf="selectedTask" class="update-form">
+  <h3>Modifier Tâche</h3>
+  <form (ngSubmit)="updateTask()" class="task-form">
+    <input type="text" [(ngModel)]="selectedTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+    <input type="date" [(ngModel)]="selectedTask.dueDate" name="dueDate" required class="input-field">
+    <select [(ngModel)]="selectedTask.priority" name="priority" required class="input-field">
+      <option value="low">Basse</option>
+      <option value="medium">Moyenne</option>
+      <option value="high">Haute</option>
+    </select>
+    <select [(ngModel)]="selectedTask.status" name="status" class="input-field">
+      <option value="pending">En attente</option>
+      <option value="completed">Complétée</option>
+    </select>
+    <button type="submit" class="btn btn-update">Mettre à jour</button>
+    <button type="button" (click)="selectedTask = null" class="btn btn-cancel">Annuler</button>
+  </form>
+</div>
+
+  </div>
+  
+
+
+<!-- <div class="task-manager">
+  
+  
+    <div class="task-container"> -->
+      <!-- Formulaire pour ajouter ou mettre a jour une nouvelle tâche -->
+      <!-- <div class="task-form-container">
+        <h2>Ajouter nouvelle tâche</h2>
+          <form (ngSubmit)="addTask()" class="task-form">
+              <input type="text"[(ngModel)]="newTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+              <input type="date" [(ngModel)]="newTask.dueDate" name="dueDate" required class="input-field">
+              <select type="text"[(ngModel)]="newTask.priority" name="priority" required class="input-field">
+                  <option value="">Sélectionner la priorité</option>
+                  <option value="low">Basse</option>
+                  <option value="medium">Moyenne</option>
+                  <option value="high">Haute</option>
+              </select>
+              <button type="submit" class="btn btn-add">Ajouter Tâche</button>
+          </form>
+      </div> -->
+
+      <!-- Liste des tâches -->
+      <!-- <div class="task-list-container">
+        <h2>Gestion des Tâches</h2>
+          <table class="task-table">
+              <thead>
+                  <tr>
+                      <th>Description</th>
+                      <th>Statut</th>
+                      <th>Date d'échéance</th>
+                      <th>Priorité</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let task of task" class="task-item">
+                      <td class="task-description">{{ task.description }}</td>
+                      <td class="task-status">{{ task.status }}</td>
+                      <td class="task-dueDate">{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
+                      <td class="task-priority">{{ task.priority }}</td>
+                      <td class="task-actions">
+                          <button (click)="selectTaskForUpdate(task)" class="btn btn-edit">Modifier</button>
+                          <button th:href="@{/tasks/delete/{id}(id=${task.id})}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button> -->
+                          <!-- <button (click)="deleteTask(task.id!)" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button> -->
+                      <!-- </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div> -->
+
+    <!-- <div *ngIf="selectedTask" class="task-form-container">
+      <h2>Metre a jour une nouvelle tâche</h2>
+      <form (ngSubmit)="updateTask()" class="task-form">
+        <input [(ngModel)]="selectedTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+        <select [(ngModel)]="selectedTask.status" name="status" class="input-field">
+          <option value="pending">En attente</option>
+          <option value="completed">Complétée</option>
+      </select>
+        <input type="date" [(ngModel)]="selectedTask.dueDate" name="dueDate" required class="input-field">
+        <select [(ngModel)]="selectedTask.priority" name="priority" required class="input-field">
+            <option value="low">Basse</option>
+            <option value="medium">Moyenne</option>
+            <option value="high">Haute</option>
+        </select>
+        
+        <button type="submit" class="btn btn-update">Mettre à jour</button>
+        <button type="button" (click)="selectedTask = null" class="btn btn-cancel">Annuler</button>
+    </form>
+    </div> -->
+
+    <!-- <div *ngIf="selectedTask" class="update-form">
+    <h3>Modifier Tâche</h3>
+    <form (ngSubmit)="updateTask()" class="task-form">
+        <input [(ngModel)]="selectedTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+        <select [(ngModel)]="selectedTask.status" name="status" class="input-field">
+          <option value="pending">En attente</option>
+          <option value="completed">Complétée</option>
+      </select>
+        <input type="date" [(ngModel)]="selectedTask.dueDate" name="dueDate" required class="input-field">
+        <select [(ngModel)]="selectedTask.priority" name="priority" required class="input-field">
+            <option value="low">Basse</option>
+            <option value="medium">Moyenne</option>
+            <option value="high">Haute</option>
+        </select>
+        
+        <button type="submit" class="btn btn-update">Mettre à jour</button>
+        <button type="button" (click)="selectedTask = null" class="btn btn-cancel">Annuler</button>
+    </form>
+    </div> -->
+<!-- </div>   -->
+
+
+  <!-- Formulaire de mise à jour de la tâche sélectionnée -->
+  <!-- <div *ngIf="selectedTask" class="update-form">
+      <h3>Modifier Tâche</h3>
+      <form (ngSubmit)="updateTask()" class="task-form">
+          <input [(ngModel)]="selectedTask.description" placeholder="Description de la tâche" name="description" required class="input-field">
+          <input type="date" [(ngModel)]="selectedTask.dueDate" name="dueDate" required class="input-field">
+          <select [(ngModel)]="selectedTask.priority" name="priority" required class="input-field">
+              <option value="low">Basse</option>
+              <option value="medium">Moyenne</option>
+              <option value="high">Haute</option>
+          </select>
+          <select [(ngModel)]="selectedTask.status" name="status" class="input-field">
+              <option value="pending">En attente</option>
+              <option value="completed">Complétée</option>
+          </select>
+          <button type="submit" class="btn btn-update">Mettre à jour</button>
+          <button type="button" (click)="selectedTask = null" class="btn btn-cancel">Annuler</button>
+      </form>
+  </div>
+</div> -->
